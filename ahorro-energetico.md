@@ -1,5 +1,7 @@
 ---
 layout: pagina
+beneficios: true
+cta: true
 title: Ahorro energético
 permalink: /ahorro-energetico/
 resumen: "Hasta 50% de ahorro de energía con aberturas de PVC que mantienen tus ambientes cálidos o fríos."

@@ -4,6 +4,7 @@ lang: es-AR
 url: https://fedesapuppo.github.io
 baseurl: /qcero-site
 preview: true
+imagen: 2021-09-cabello-jalil-pha-g-viramonte-8791-06-21-hdr.webp
 
 permalink: pretty
 
@@ -30,6 +31,7 @@ defaults:
 
 plugins:
   - jekyll-redirect-from
+  - jekyll-sitemap
 
 exclude:
   - README.md

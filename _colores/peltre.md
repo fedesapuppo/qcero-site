@@ -12,7 +12,6 @@ galeria:
   - 2021-08-img-0199-scaled.webp
   - 2021-08-img-0239-scaled.webp
   - 2021-08-corredizas-villa-del-dique.webp
-  - 2021-08-img-0728-1-scaled.webp
 redirect_from:
   - /project/peltre/
 ---

@@ -17,7 +17,7 @@ def convertir(original, final):
         if os.path.exists(salida):
             continue
         os.makedirs(os.path.dirname(salida), exist_ok=True)
-        subprocess.run(["magick", fuente + "[0]", "-auto-orient", "-strip", "-resize", f"{ancho}x{ancho}>", "-quality", "74", salida], check=True)
+        subprocess.run(["magick", fuente + "[0]", "-auto-orient", "-strip", "-fuzz", "7%", "-trim", "+repage", "-resize", f"{ancho}x{ancho}>", "-quality", "74", salida], check=True)
 
 faltan = set()
 for dirpath, _, archivos in os.walk(RAIZ):

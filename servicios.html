@@ -1,6 +1,7 @@
 ---
 title: Servicios
 resumen: Te acompañamos desde el diseño hasta la colocación, para particulares y arquitectos.
+cta: true
 ---
 {% assign items = site.servicios | sort: "orden" %}
-<div class="grilla seccion">{% for item in items %}{% include tarjeta.html item=item %}{% endfor %}</div>
+<div class="grilla">{% for item in items %}{% include tarjeta.html item=item %}{% endfor %}</div>

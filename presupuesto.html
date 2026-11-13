@@ -2,7 +2,7 @@
 title: Pedir presupuesto
 resumen: Completá lo que sepas. Con estos datos te cotizamos más rápido y con más precisión.
 ---
-<form class="formulario seccion" action="https://formsubmit.co/{{ site.data.empresa.email }}" method="post" enctype="multipart/form-data">
+<form class="formulario" action="https://formsubmit.co/{{ site.data.empresa.email }}" method="post" enctype="multipart/form-data">
   <input type="hidden" name="_subject" value="Pedido de presupuesto desde la web">
   <input type="hidden" name="_template" value="table">
   <input type="hidden" name="_next" value="{{ '/gracias/' | absolute_url }}">

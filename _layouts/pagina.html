@@ -8,6 +8,12 @@ layout: default
     {% if page.resumen %}<p class="bajada">{{ page.resumen }}</p>{% endif %}
   </div>
 </header>
-<div class="contenedor texto">
-  {{ content }}
+<div class="contenedor cuerpo">
+  {% assign ext = page.path | split: "." | last %}{% if ext == "md" %}<div class="texto">{{ content }}</div>{% else %}{{ content }}{% endif %}
+  {% if page.beneficios %}
+  <ul class="beneficios beneficios-pagina">
+    {% for b in site.data.beneficios %}<li><strong>{{ b.titulo }}</strong>{{ b.texto }}</li>{% endfor %}
+  </ul>
+  {% endif %}
 </div>
+{% if page.cta %}{% include cta.html %}{% endif %}

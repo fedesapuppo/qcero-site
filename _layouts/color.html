@@ -15,5 +15,12 @@ layout: default
     {% include galeria.html fotos=page.galeria alt=page.title %}
   </section>
   {% endif %}
+  <section class="seccion">
+    <h2>Otros colores</h2>
+    <ul class="muestras muestras-claras otros-colores">
+      {% assign colores = site.colores | sort: "orden" %}
+      {% for c in colores %}{% if c.url != page.url %}<li><a href="{{ c.url | relative_url }}">{% include img.html src=c.muestra alt="" sizes="96px" %}<span>{{ c.title }}</span></a></li>{% endif %}{% endfor %}
+    </ul>
+  </section>
 </div>
 {% include cta.html titulo="¿Te gusta este color?" producto=page.title %}
