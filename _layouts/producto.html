@@ -1,0 +1,73 @@
+---
+layout: default
+---
+{% assign categoria = site.data.categorias | where: "slug", page.categoria | first %}
+<article>
+  <div class="contenedor producto">
+    <div class="producto-foto">
+      {% if page.imagen %}{% include img.html src=page.imagen alt=page.title loading="eager" %}{% endif %}
+    </div>
+    <div class="producto-info">
+      <p class="miga">
+        {% if categoria %}<a href="{{ '/productos/' | relative_url }}#{{ categoria.slug }}">{{ categoria.nombre }}</a>{% else %}<a href="{{ '/servicios/' | relative_url }}">Servicios</a>{% endif %}
+      </p>
+      <h1>{{ page.title }}</h1>
+      {% if page.resumen %}<p class="bajada">{{ page.resumen }}</p>{% endif %}
+      {% if page.puntos %}
+      <ul class="puntos">{% for p in page.puntos %}<li>{{ p }}</li>{% endfor %}</ul>
+      {% endif %}
+      <div class="botones">
+        <a class="boton" href="{{ '/presupuesto/' | relative_url }}?producto={{ page.title | url_encode }}">Pedir presupuesto</a>
+        <a class="boton boton-claro" href="{% capture t %}Hola, quiero consultar por {{ page.title }}.{% endcapture %}{% include wa-url.html texto=t %}">Consultar por WhatsApp</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="contenedor">
+    {% if page.modelos %}
+    <section class="seccion">
+      <h2>Modelos</h2>
+      <ul class="grilla grilla-chica">
+        {% for m in page.modelos %}
+        <li class="modelo">{% include img.html src=m.imagen alt=m.nombre sizes="(min-width: 900px) 20vw, 50vw" %}<span>{{ m.nombre }}</span></li>
+        {% endfor %}
+      </ul>
+    </section>
+    {% endif %}
+
+    {% assign cuerpo = content | strip %}
+    {% if cuerpo != "" %}
+    <details class="mas-info">
+      <summary>Más información</summary>
+      <div class="texto">{{ content }}</div>
+    </details>
+    {% endif %}
+
+    {% if page.video %}
+    <section class="seccion">
+      <h2>Video</h2>
+      <div class="video"><iframe src="https://www.youtube-nocookie.com/embed/{{ page.video }}" title="Video de {{ page.title }}" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+    </section>
+    {% endif %}
+
+    {% if page.galeria %}
+    <section class="seccion">
+      <h2>Fotos</h2>
+      {% include galeria.html fotos=page.galeria alt=page.title %}
+    </section>
+    {% endif %}
+
+    {% if categoria %}
+    {% assign hermanos = site.productos | where: "categoria", page.categoria | sort: "orden" %}
+    {% if hermanos.size > 1 %}
+    <section class="seccion">
+      <h2>Más {{ categoria.nombre | downcase }}</h2>
+      <div class="grilla">
+        {% for item in hermanos %}{% if item.url != page.url %}{% include tarjeta.html item=item %}{% endif %}{% endfor %}
+      </div>
+    </section>
+    {% endif %}
+    {% endif %}
+  </div>
+</article>
+{% include cta.html producto=page.title %}

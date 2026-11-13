@@ -1,0 +1,40 @@
+title: Qcero
+description: Fábrica de aberturas de PVC en Alta Gracia, Córdoba. Diseñamos, medimos, fabricamos y colocamos.
+lang: es-AR
+url: https://fedesapuppo.github.io
+baseurl: /qcero-site
+preview: true
+
+permalink: pretty
+
+collections:
+  productos:
+    output: true
+    permalink: /:name/
+  servicios:
+    output: true
+    permalink: /:name/
+  colores:
+    output: true
+    permalink: /colores/:name/
+
+defaults:
+  - scope: { type: productos }
+    values: { layout: producto }
+  - scope: { type: servicios }
+    values: { layout: producto }
+  - scope: { type: colores }
+    values: { layout: color }
+  - scope: { path: "" }
+    values: { layout: pagina }
+
+plugins:
+  - jekyll-redirect-from
+
+exclude:
+  - README.md
+  - CLAUDE.md
+  - Gemfile
+  - Gemfile.lock
+  - scripts
+  - vendor

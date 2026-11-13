@@ -1,0 +1,90 @@
+---
+layout: default
+title: Inicio
+imagen: 2021-09-cabello-jalil-pha-g-viramonte-8791-06-21-hdr.webp
+redirect_from:
+  - /disfruta-de-aquello-pensado-para-ser-disfrutado/
+  - /pagina-ejemplo/
+  - /publicidad-lateral/
+---
+<section class="hero">
+  {% include img.html src=page.imagen alt="Living con grandes aberturas de PVC Qcero" loading="eager" sizes="100vw" class="hero-fondo" %}
+  <div class="contenedor hero-texto">
+    <p class="antetitulo">Fábrica de aberturas de PVC</p>
+    <h1>Construimos tu hogar</h1>
+    <p class="bajada">Diseñamos, medimos, fabricamos y colocamos tus aberturas. Un solo equipo de principio a fin.</p>
+    <div class="botones">
+      <a class="boton" href="{{ '/presupuesto/' | relative_url }}">Pedir presupuesto</a>
+      <a class="boton boton-claro" href="{{ '/productos/' | relative_url }}">Ver productos</a>
+    </div>
+  </div>
+</section>
+
+{% for p in site.data.empresa.proximamente %}
+<p class="aviso"><strong>Próximamente</strong> {{ p.texto }}</p>
+{% endfor %}
+
+<section class="seccion contenedor">
+  <h2>Servicio integral</h2>
+  <p class="bajada">Nos ocupamos de todo, vos disfrutás el proceso.</p>
+  <ol class="pasos">
+    <li><a href="{{ '/disenamos-y-asesoramos/' | relative_url }}"><span>1</span><strong>Diseñamos</strong>Asesoramos a vos y a tu arquitecto.</a></li>
+    <li><a href="{{ '/medimos-en-obra/' | relative_url }}"><span>2</span><strong>Medimos en obra</strong>Resolvemos cada detalle técnico.</a></li>
+    <li><a href="{{ '/fabricamos/' | relative_url }}"><span>3</span><strong>Fabricamos</strong>En nuestra planta, a medida.</a></li>
+    <li><a href="{{ '/colocacion/' | relative_url }}"><span>4</span><strong>Colocamos</strong>Al milímetro, con seguimiento.</a></li>
+  </ol>
+</section>
+
+<section class="seccion fondo-suave">
+  <div class="contenedor">
+    <h2>Productos</h2>
+    <div class="grilla">
+      {% for c in site.data.categorias %}
+      {% assign primero = site.productos | where: "categoria", c.slug | sort: "orden" | first %}
+      {% if primero %}
+      <a class="tarjeta" href="{{ '/productos/' | relative_url }}#{{ c.slug }}">
+        {% if primero.imagen %}{% include img.html src=primero.imagen alt=c.nombre sizes="(min-width: 900px) 33vw, (min-width: 600px) 50vw, 100vw" %}{% endif %}
+        <span class="tarjeta-texto"><strong>{{ c.nombre }}</strong><span>{{ c.texto }}</span></span>
+      </a>
+      {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="seccion contenedor ahorro">
+  <div>
+    <p class="cifra">50%</p>
+    <h2>Menos gasto de energía</h2>
+    <p>Las aberturas de PVC aíslan el frío y el calor, no condensan y cumplen los estándares internacionales de sustentabilidad.</p>
+    <a class="enlace" href="{{ '/ahorro-energetico/' | relative_url }}">Cómo ahorrás energía</a>
+  </div>
+  <ul class="beneficios">
+    {% for b in site.data.beneficios limit: 4 %}<li><strong>{{ b.titulo }}</strong>{{ b.texto }}</li>{% endfor %}
+  </ul>
+</section>
+
+<section class="seccion fondo-oscuro">
+  <div class="contenedor">
+    <h2>Colores</h2>
+    <p class="bajada">Blancos, lisos y símil madera. Mirá cada color en obras reales.</p>
+    <ul class="muestras">
+      {% assign colores = site.colores | sort: "orden" %}
+      {% for c in colores %}
+      <li><a href="{{ c.url | relative_url }}">{% include img.html src=c.muestra alt="" sizes="96px" %}<span>{{ c.title }}</span></a></li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+
+<section class="seccion contenedor calidad">
+  <h2>Nuestro sello de calidad</h2>
+  <ul class="sellos">
+    <li><img src="{{ '/assets/img/sellos/ekoglass.webp' | relative_url }}" alt="Ekoglass" loading="lazy"></li>
+    <li><img src="{{ '/assets/img/sellos/ley-13059.webp' | relative_url }}" alt="Ley 13.059 de acondicionamiento térmico" loading="lazy"></li>
+    <li><img src="{{ '/assets/img/sellos/iso.webp' | relative_url }}" alt="Normas ISO" loading="lazy"></li>
+  </ul>
+  <blockquote>«El placer de disfrutar lo que está bien hecho»</blockquote>
+</section>
+
+{% include cta.html %}

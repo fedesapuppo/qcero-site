@@ -1,0 +1,24 @@
+nombre: Qcero S.R.L.
+email: info@qcero.com.ar
+whatsapp: "5493547512299"
+whatsapp_texto: Hola, quiero consultar por aberturas de PVC.
+
+sucursales:
+  - nombre: Alta Gracia
+    direccion: Colectora Ruta 5 km 27, Guillermo Almada 1015
+    localidad: Alta Gracia, Córdoba
+    telefono: "+54 3547 512299"
+    mapa: https://www.google.com/maps/search/?api=1&query=Qcero+Aberturas+de+PVC+Alta+Gracia
+    mapa_embed: "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13585.865499878093!2d-64.408383!3d-31.648458!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x39686bdbe7f0863a!2sQcero%20Aberturas%20de%20PVC!5e0!3m2!1ses!2sar!4v1620686185428!5m2!1ses!2sar"
+
+proximamente:
+  - nombre: Córdoba
+    texto: Abrimos una nueva sucursal en Córdoba en 2027.
+
+redes:
+  - nombre: Instagram
+    url: https://instagram.com/qcero.aberturaspvc
+  - nombre: Facebook
+    url: https://www.facebook.com/Qcero
+  - nombre: YouTube
+    url: https://www.youtube.com/channel/UC1FmSDIpHUW1AAAmCFAKiqw

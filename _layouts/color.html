@@ -1,0 +1,19 @@
+---
+layout: default
+---
+<div class="contenedor">
+  <div class="color-cabecera">
+    {% include img.html src=page.muestra alt=page.title class="muestra-grande" sizes="200px" loading="eager" %}
+    <div>
+      <p class="miga"><a href="{{ '/colores/' | relative_url }}">Colores</a></p>
+      <h1>{{ page.title }}</h1>
+    </div>
+  </div>
+  {% if page.galeria %}
+  <section class="seccion">
+    <h2>Obras en {{ page.title }}</h2>
+    {% include galeria.html fotos=page.galeria alt=page.title %}
+  </section>
+  {% endif %}
+</div>
+{% include cta.html titulo="¿Te gusta este color?" producto=page.title %}

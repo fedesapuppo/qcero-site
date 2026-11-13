@@ -1,0 +1,40 @@
+---
+title: Pedir presupuesto
+resumen: Completá lo que sepas. Con estos datos te cotizamos más rápido y con más precisión.
+---
+<form class="formulario seccion" action="https://formsubmit.co/{{ site.data.empresa.email }}" method="post" enctype="multipart/form-data">
+  <input type="hidden" name="_subject" value="Pedido de presupuesto desde la web">
+  <input type="hidden" name="_template" value="table">
+  <input type="hidden" name="_next" value="{{ '/gracias/' | absolute_url }}">
+  <input type="text" name="_honey" class="oculto" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+  <fieldset>
+    <legend>Tus datos</legend>
+    <label>Nombre y apellido <input name="nombre" required autocomplete="name"></label>
+    <label>Teléfono o WhatsApp <input name="telefono" type="tel" required autocomplete="tel"></label>
+    <label>Email <input name="email" type="email" autocomplete="email"></label>
+    <label>Localidad de la obra <input name="localidad" required></label>
+    <label class="check"><input type="checkbox" name="soy_profesional" value="Sí"> Soy arquitecto/a o profesional de la construcción</label>
+  </fieldset>
+
+  <fieldset>
+    <legend>Tu obra</legend>
+    <p class="opciones">
+      <label class="check"><input type="radio" name="tipo_de_obra" value="Obra nueva" required> Obra nueva</label>
+      <label class="check"><input type="radio" name="tipo_de_obra" value="Renovación de aberturas"> Renovación de aberturas</label>
+    </p>
+    <p class="etiqueta-grupo">¿Qué necesitás?</p>
+    <p class="opciones">
+      {% for c in site.data.categorias %}<label class="check"><input type="checkbox" name="necesita[]" value="{{ c.nombre }}"> {{ c.nombre }}</label>{% endfor %}
+    </p>
+    <label>Producto que te interesa <input name="producto" list="lista-productos" placeholder="Por ejemplo, Corredizas"></label>
+    <datalist id="lista-productos">{% assign ps = site.productos | sort: "title" %}{% for p in ps %}<option value="{{ p.title }}">{% endfor %}</datalist>
+    <label>Color <select name="color"><option value="">Todavía no sé</option>{% assign cs = site.colores | sort: "orden" %}{% for c in cs %}<option>{{ c.title }}</option>{% endfor %}</select></label>
+    <label>Cantidad de aberturas, aproximada <input name="cantidad" type="number" min="1" inputmode="numeric"></label>
+    <label>Medidas y comentarios <textarea name="detalle" rows="5" placeholder="Por ejemplo: 2 ventanas de 1,50 × 1,10 m y una puerta-ventana de 2,00 × 2,20 m"></textarea></label>
+    <label>Planos o fotos (opcional) <input type="file" name="archivo" accept="image/*,.pdf"></label>
+  </fieldset>
+
+  <button class="boton" type="submit">Enviar pedido</button>
+  <p class="nota">¿Preferís hablar? <a href="{% include wa-url.html texto="Hola, quiero pedir un presupuesto." %}">Escribinos por WhatsApp</a>.</p>
+</form>

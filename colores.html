@@ -1,0 +1,12 @@
+---
+title: Colores
+resumen: Blancos, lisos y símil madera. Tocá un color para verlo en obras reales.
+redirect_from:
+  - /proyectos/
+---
+{% assign colores = site.colores | sort: "orden" %}
+<ul class="grilla grilla-chica seccion colores">
+  {% for c in colores %}
+  <li><a class="tarjeta" href="{{ c.url | relative_url }}">{% include img.html src=c.muestra alt="" sizes="(min-width: 900px) 20vw, 50vw" %}<span class="tarjeta-texto"><strong>{{ c.title }}</strong>{% if c.galeria %}<span>{{ c.galeria.size }} fotos de obra</span>{% endif %}</span></a></li>
+  {% endfor %}
+</ul>

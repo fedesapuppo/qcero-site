@@ -1,0 +1,7 @@
+<a class="tarjeta" href="{{ include.item.url | relative_url }}">
+  {% if include.item.imagen %}{% include img.html src=include.item.imagen alt=include.item.title sizes="(min-width: 900px) 33vw, (min-width: 600px) 50vw, 100vw" %}{% endif %}
+  <span class="tarjeta-texto">
+    <strong>{{ include.item.title }}</strong>
+    {% if include.item.resumen %}<span>{{ include.item.resumen }}</span>{% endif %}
+  </span>
+</a>

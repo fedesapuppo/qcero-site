@@ -1,0 +1,17 @@
+---
+title: Productos
+resumen: Aberturas, puertas y complementos de PVC, fabricados a medida.
+---
+<nav class="saltos" aria-label="Categorías">
+  {% for c in site.data.categorias %}<a href="#{{ c.slug }}">{{ c.nombre }}</a>{% endfor %}
+</nav>
+{% for c in site.data.categorias %}
+{% assign items = site.productos | where: "categoria", c.slug | sort: "orden" %}
+{% if items.size > 0 %}
+<section class="seccion" id="{{ c.slug }}">
+  <h2>{{ c.nombre }}</h2>
+  <p>{{ c.texto }}</p>
+  <div class="grilla">{% for item in items %}{% include tarjeta.html item=item %}{% endfor %}</div>
+</section>
+{% endif %}
+{% endfor %}

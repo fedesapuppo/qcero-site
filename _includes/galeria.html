@@ -1,0 +1,7 @@
+{% if include.fotos and include.fotos.size > 0 %}
+<ul class="galeria">
+  {% for foto in include.fotos %}
+  <li><a href="{{ '/assets/img/' | append: foto | relative_url }}" data-ampliar>{% include img.html src=foto alt=include.alt sizes="(min-width: 900px) 25vw, 50vw" %}</a></li>
+  {% endfor %}
+</ul>
+{% endif %}

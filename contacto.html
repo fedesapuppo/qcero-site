@@ -1,0 +1,23 @@
+---
+title: Contacto
+resumen: Escribinos, llamanos o visitanos en el showroom.
+---
+<div class="contacto seccion">
+  <div>
+    <h2>Escribinos</h2>
+    <p><a class="boton" href="{% include wa-url.html %}">WhatsApp</a></p>
+    <p><a href="mailto:{{ site.data.empresa.email }}">{{ site.data.empresa.email }}</a></p>
+    <p>¿Querés un presupuesto? <a href="{{ '/presupuesto/' | relative_url }}">Completá el formulario</a> y te respondemos con los datos que necesitamos.</p>
+    {% for s in site.data.empresa.sucursales %}
+    <h2>{{ s.nombre }}</h2>
+    <p>{{ s.direccion }}<br>{{ s.localidad }}<br><a href="tel:{{ s.telefono | remove: ' ' }}">{{ s.telefono }}</a></p>
+    <p><a href="{{ s.mapa }}" rel="noopener">Cómo llegar</a></p>
+    {% endfor %}
+    {% for p in site.data.empresa.proximamente %}
+    <h2>{{ p.nombre }} <span class="etiqueta">Próximamente</span></h2>
+    <p>{{ p.texto }}</p>
+    {% endfor %}
+  </div>
+  {% assign s = site.data.empresa.sucursales | first %}
+  <iframe class="mapa" src="{{ s.mapa_embed }}" title="Mapa de {{ s.nombre }}" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+</div>

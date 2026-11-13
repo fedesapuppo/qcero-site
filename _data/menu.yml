@@ -1,0 +1,10 @@
+- titulo: Productos
+  url: /productos/
+- titulo: Servicios
+  url: /servicios/
+- titulo: Colores
+  url: /colores/
+- titulo: Ahorro energético
+  url: /ahorro-energetico/
+- titulo: Contacto
+  url: /contacto/

@@ -1,0 +1,10 @@
+<section class="cta">
+  <div class="contenedor">
+    <h2>{{ include.titulo | default: "¿Tenés una obra en mente?" }}</h2>
+    <p>Contanos qué necesitás y te pasamos un presupuesto.</p>
+    <div class="botones">
+      <a class="boton" href="{{ '/presupuesto/' | relative_url }}{% if include.producto %}?producto={{ include.producto | url_encode }}{% endif %}">Pedir presupuesto</a>
+      <a class="boton boton-claro" href="{% include wa-url.html texto=include.wa %}">Escribinos por WhatsApp</a>
+    </div>
+  </div>
+</section>
